@@ -69,7 +69,7 @@ h2 {
 
 .app .todos .todo {
   margin-top: 0.8em;
-  /* width: 20em; */
+  width: 37em;
   height: 2em;
   background-color: white;
   display: flex;
@@ -91,6 +91,7 @@ h2 {
   font-weight: 700;
   font-style: normal;
   color: grey;
+  text-align: center;
 }
 
 .to-do-list {
