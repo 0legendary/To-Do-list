@@ -4,7 +4,7 @@ import './App.css';
 function App() {
   const [toDos, setToDos] = useState([]);
   const [toDo, setTodo] = useState('');
-  const [scheduled, setScheduled] = useState([]);
+  const [discarded, setDiscarded] = useState([]);
   const [finished, setFinished] = useState([]);
 
   const handleCheck = (id, time) => {
@@ -32,13 +32,30 @@ function App() {
 
         </div>
         <div className="input">
-          <input value={toDo} onChange={(e) => setTodo(e.target.value)} type="text" placeholder="🖊️ Add item..." />
+          <input
+            value={toDo}
+            onChange={(e) => setTodo(e.target.value)}
+            onKeyPress={(e) => {
+              if (e.key === "Enter" && toDo.length >= 3 && toDo.length <= 30) {
+                const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+                setToDos([...toDos, { id: Date.now(), text: toDo, status: false, time: currentTime }]);
+                setTodo('');
+              }
+            }}
+            type="text"
+            placeholder="🖊️ Add item..."
+          />
           <i onClick={() => {
-            const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-            setToDos([...toDos, { id: Date.now(), text: toDo, status: false, time: currentTime }])
-
+            if (toDo.length >= 3 && toDo.length <= 30) {
+              const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+              setToDos([...toDos, { id: Date.now(), text: toDo, status: false, time: currentTime }]);
+              setTodo('');
+            }
           }} className="fas fa-plus"></i>
         </div>
+
+
+
 
       </div>
 
@@ -53,11 +70,14 @@ function App() {
               <div className="todos">
                 {finished.map((obj) => {
                   return (
-                    <div className="todo" key={obj.id}>
+                    <div className="todo finished-box" key={obj.id}>
                       <div className="left">
-                        <p>{obj.text}</p>
-                        <p>{obj.time}</p>
+                        <p className='text-finished'>{obj.text}</p>
 
+
+                      </div>
+                      <div className="right">
+                        <p className='time'>{obj.time}</p>
                       </div>
                     </div>
                   )
@@ -85,14 +105,14 @@ function App() {
                           id=""
 
                         />
-                        <p>{obj.text}</p>
+                        <p className='text-progress'>{obj.text}</p>
 
                       </div>
                       <div className="right">
-                        {obj.time && <p className='progress-time'>{obj.time}</p>}
+                        {obj.time && <p className='time'>{obj.time}</p>}
                         <i onClick={() => {
                           setToDos(toDos.filter(obj2 => obj2.id !== obj.id));
-                          setScheduled([...scheduled, { id: Date.now(), text: obj.text, status: false, time: new Date().toLocaleString() }]);
+                          setDiscarded([...discarded, { id: Date.now(), text: obj.text, status: false, time: new Date().toLocaleString() }]);
 
                         }} className="fas fa-times"></i>
 
@@ -105,18 +125,21 @@ function App() {
           </div>
         </section>
 
-        {/* Scheduled List */}
-        <section className="scheduled-list">
+        {/* Discarded List */}
+        <section className="discarded-list">
           <div className="container">
-            <div className="scheduled-list-border">
-              <h1>Scheduled List</h1>
+            <div className="discarded-list-border">
+              <h1>Discarded List</h1>
               <div className="todos">
-                {scheduled.map((obj) => {
+                {discarded.map((obj) => {
                   return (
-                    <div className="todo" key={obj.id}>
+                    <div className="todo discarded-box" key={obj.id}>
                       <div className="left">
-                        <p>{obj.text}</p>
-                        <p>{obj.time}</p>
+                        <p className='text-discarded'>{obj.text}</p>
+
+                      </div>
+                      <div className="right">
+                        <p className='time'>{obj.time}</p>
                       </div>
                     </div>
                   )
