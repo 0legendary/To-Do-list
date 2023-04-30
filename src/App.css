@@ -57,7 +57,7 @@ h2 {
   font-weight: 900;
   color: grey;
   margin-right: -30%;
-    margin-left: 50%;
+  margin-left: 50%;
 }
 
 .app .todos {
@@ -80,6 +80,7 @@ h2 {
 }
 
 .app .todos .todo .left {
+  flex: 2;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -91,8 +92,18 @@ h2 {
   font-weight: 700;
   font-style: normal;
   color: grey;
-  text-align: center;
+  text-align: left;
 }
+
+.app .todos .todo .right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 3%;
+}
+
+
 
 .to-do-list {
   width: 100%;
@@ -138,6 +149,50 @@ h2 {
 
 .finished-list-border,
 .progress-list-border,
-.scheduled-list-border{
+.scheduled-list-border {
   padding-top: 3%;
+}
+
+
+/* progress-list */
+
+.fa-times {
+  padding-left: 0%;
+}
+
+.fa-times {
+  cursor: pointer;
+  font-size: larger;
+  font-weight: 900;
+  color: grey;
+  margin-right: -66% !important;
+  margin-left: -5% !important;
+}
+
+.progress-time {
+  margin-left: 3px;
+  font-size: medium;
+  font-weight: 700;
+  font-style: normal;
+  color: grey;
+  text-align: center;
+  align-items: center;
+}
+
+
+
+.progress-time {
+  padding-left: 5%;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 5%;
+}
+
+.checkbox-progress {
+  margin-left: -35%;
+  margin-right: -35%;
 }

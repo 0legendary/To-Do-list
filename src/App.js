@@ -19,7 +19,7 @@ function App() {
     });
     setToDos(updatedToDos.filter(obj => obj !== null));
   };
-  
+
   return (
     <div className="app">
       <div className='to-do-list'>
@@ -33,8 +33,13 @@ function App() {
         </div>
         <div className="input">
           <input value={toDo} onChange={(e) => setTodo(e.target.value)} type="text" placeholder="🖊️ Add item..." />
-          <i onClick={() => setToDos([...toDos, { id: Date.now(), text: toDo, status: false }])} className="fas fa-plus"></i>
+          <i onClick={() => {
+            const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            setToDos([...toDos, { id: Date.now(), text: toDo, status: false, time: currentTime }])
+
+          }} className="fas fa-plus"></i>
         </div>
+
       </div>
 
       <div className="lists-container">
@@ -52,7 +57,7 @@ function App() {
                       <div className="left">
                         <p>{obj.text}</p>
                         <p>{obj.time}</p>
-                        
+
                       </div>
                     </div>
                   )
@@ -72,22 +77,25 @@ function App() {
                   return (
                     <div className="todo" key={obj.id}>
                       <div className="left">
-                        <input
+                        <input className='checkbox-progress'
                           onChange={() => handleCheck(obj.id, new Date().toLocaleString())}
                           value={obj.status}
                           type="checkbox"
                           name=""
                           id=""
-                          
+
                         />
                         <p>{obj.text}</p>
+
                       </div>
                       <div className="right">
+                        {obj.time && <p className='progress-time'>{obj.time}</p>}
                         <i onClick={() => {
                           setToDos(toDos.filter(obj2 => obj2.id !== obj.id));
                           setScheduled([...scheduled, { id: Date.now(), text: obj.text, status: false, time: new Date().toLocaleString() }]);
-                          
+
                         }} className="fas fa-times"></i>
+
                       </div>
                     </div>
                   )
