@@ -36,7 +36,7 @@ function App() {
             value={toDo}
             onChange={(e) => setTodo(e.target.value)}
             onKeyPress={(e) => {
-              if (e.key === "Enter" && toDo.length >= 3 && toDo.length <= 30) {
+              if (e.key === "Enter" && toDo.length >= 1 && toDo.length <= 22) {
                 const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
                 setToDos([...toDos, { id: Date.now(), text: toDo, status: false, time: currentTime }]);
                 setTodo('');
@@ -46,7 +46,7 @@ function App() {
             placeholder="🖊️ Add item..."
           />
           <i onClick={() => {
-            if (toDo.length >= 3 && toDo.length <= 30) {
+            if (toDo.length >= 3 && toDo.length <= 22 ) {
               const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
               setToDos([...toDos, { id: Date.now(), text: toDo, status: false, time: currentTime }]);
               setTodo('');
@@ -103,7 +103,7 @@ function App() {
                           type="checkbox"
                           name=""
                           id=""
-
+                          style={{color: "red"}}
                         />
                         <p className='text-progress'>{obj.text}</p>
 

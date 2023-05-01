@@ -32,16 +32,16 @@ h2 {
 }
 
 .app .input {
-  margin-top: 0.8em;
+  margin-top: 0.8em !important;
   width: 20em;
   height: 2em;
   background-color: white;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   border-radius: 6px;
   padding: 5px;
-  margin-left: 42%;
+  margin: auto;
 }
 
 .app .input input {
@@ -172,6 +172,8 @@ h2 {
 
 /* progress-list */
 
+
+
 .fa-times {
   padding-left: 0%;
 }
@@ -180,7 +182,7 @@ h2 {
   cursor: pointer;
   font-size: larger;
   font-weight: 900;
-  color: grey;
+  color: rgb(255, 0, 0) !important;
   margin-right: -66% !important;
   margin-left: -5% !important;
 }
@@ -209,13 +211,19 @@ h2 {
 }
 
 .checkbox-progress {
-  margin-left: -35%;
-  margin-right: -35%;
+  margin-left: 6%;
+  margin-right: 3%;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #00ff09;
+  border-radius: 3px;
+  background-color: white;
   
 }
 
 .text-progress {
-  text-align: center !important;
+  text-align: left !important;
   font-size: large !important;
   color: rgb(0, 0, 0) !important;
   text-transform: capitalize;
