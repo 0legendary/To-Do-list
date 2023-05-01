@@ -7,6 +7,7 @@ function App() {
   const [discarded, setDiscarded] = useState([]);
   const [finished, setFinished] = useState([]);
 
+
   const handleCheck = (id, time) => {
     const updatedToDos = toDos.map((obj) => {
       if (obj.id === id) {
@@ -19,14 +20,27 @@ function App() {
     });
     setToDos(updatedToDos.filter(obj => obj !== null));
   };
+  function updateTime() {
+    const now = new Date();
+    const time = now.toLocaleTimeString('en-US', { hour12: true });
+    const dateTimeString = `${time}`;
+    document.getElementById("time").innerHTML = dateTimeString;
+}
+setInterval(updateTime, 1000);
+
+
 
   return (
     <div className="app">
       <div className='to-do-list'>
+        
         <div className="mainHeading">
           <h1>ToDo List</h1>
+        
         </div>
+        
         <div className="subHeading">
+
           <br />
           <h2>Whoop, it's {new Date().toLocaleDateString('en-US', { weekday: 'long' })} 🌝 ☕ </h2>
 
@@ -46,23 +60,29 @@ function App() {
             placeholder="🖊️ Add item..."
           />
           <i onClick={() => {
-            if (toDo.length >= 3 && toDo.length <= 22 ) {
+            if (toDo.length >= 3 && toDo.length <= 22) {
               const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
               setToDos([...toDos, { id: Date.now(), text: toDo, status: false, time: currentTime }]);
               setTodo('');
             }
           }} className="fas fa-plus"></i>
+
         </div>
-
-
-
-
+        <h2 id="time"></h2>
       </div>
 
+
+      <div className='general-time'>
+        <div>
+        
+        </div>
+      </div>
+
+
+
+
+      {/* Finished List */}
       <div className="lists-container">
-
-
-        {/* Finished List */}
         <section className="finished-list">
           <div className="container">
             <div className="finished-list-border">
@@ -95,7 +115,7 @@ function App() {
               <div className="todos">
                 {toDos.map((obj) => {
                   return (
-                    <div className="todo" key={obj.id}>
+                    <div className="todo progress-box" key={obj.id}>
                       <div className="left">
                         <input className='checkbox-progress'
                           onChange={() => handleCheck(obj.id, new Date().toLocaleString())}
@@ -103,7 +123,7 @@ function App() {
                           type="checkbox"
                           name=""
                           id=""
-                          style={{color: "red"}}
+                          style={{ color: "red" }}
                         />
                         <p className='text-progress'>{obj.text}</p>
 
