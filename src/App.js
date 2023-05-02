@@ -22,11 +22,27 @@ function App() {
   };
   function updateTime() {
     const now = new Date();
-    const time = now.toLocaleTimeString('en-US', { hour12: true });
+    const time = now.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', hour12: true });
     const dateTimeString = `${time}`;
     document.getElementById("time").innerHTML = dateTimeString;
+
+    const seconds = now.getSeconds();
+    const tic = document.getElementById("tic");
+    const toc = document.getElementById("toc");
+    const secondsEl = document.getElementById("seconds");
+    secondsEl.innerHTML = seconds < 10 ? "0" + seconds : seconds;
+
+    if (seconds % 2 === 0) {
+      tic.style.visibility = "visible";
+      toc.style.visibility = "hidden";
+    } else {
+      tic.style.visibility = "hidden";
+      toc.style.visibility = "visible";
+    }
   }
   setInterval(updateTime, 1000);
+  ;
+
 
 
 
@@ -72,10 +88,15 @@ function App() {
           <div>
             <h2 id="time"></h2>
           </div>
+          <div className="tic-toc">
+            <p className='tic' id="tic">TIC</p>
+            <p className='sec' id="seconds"></p>
+            <p className='toc' id="toc">TOC</p>
+          </div>
         </div>
 
-      </div>
 
+      </div>
 
 
 
