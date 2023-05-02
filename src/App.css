@@ -8,7 +8,7 @@ body {
   background-color: #29292a;
   background-image: url(/png/bg.jpg) !important;
   background-repeat: no-repeat;
-  
+
 }
 
 .app {
@@ -116,12 +116,14 @@ h2 {
   margin-bottom: -4%;
   margin-top: 0%;
 }
+
 #time {
   color: azure;
   text-align: center;
   margin-left: 0%;
   padding-top: 2%;
 }
+
 /* Finished-list */
 
 
@@ -154,6 +156,8 @@ h2 {
   background-position: center;
   background-size: cover;
   position: relative;
+  border-top-left-radius: 3%;
+  border-top-right-radius: 3%;
 }
 
 .progress-list {
@@ -162,6 +166,8 @@ h2 {
   background-position: center;
   background-size: cover;
   position: relative;
+  border-top-left-radius: 3%;
+  border-top-right-radius: 3%;
 }
 
 .discarded-list {
@@ -170,22 +176,42 @@ h2 {
   background-position: center;
   background-size: cover;
   position: relative;
+  border-top-left-radius: 3%;
+  border-top-right-radius: 3%;
 }
 
 .finished-list-border,
 .progress-list-border,
 .discarded-list-border {
-  padding-top: 3%;
+  padding-top: 0%;
   overflow-y: auto;
   overflow-x: hidden;
   max-height: 450px;
+ 
 }
+.sticky-text{
+  position: sticky;
+  top: 0;
+}
+.img1{
+  z-index: 1;
+  background-image: url(/png/black.jpg) !important;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  background-repeat: no-repeat;
+  background-position:center 0px !important;
+  background-size: 102%;
+  border-top-left-radius: 3%;
+  border-top-right-radius: 3%;
+}
+
 
 .text-finished {
   text-align: center !important;
   font-size: large !important;
   color: rgb(0, 0, 0) !important;
   text-transform: capitalize;
+  
 }
 
 .finished-box {
@@ -195,9 +221,36 @@ h2 {
 }
 
 
+/* change scrollbar color */
+::-webkit-scrollbar {
+  width: 12px; 
+  background-color: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #aaa; 
+  border-radius: 10px; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #505050;; 
+}
+
 
 /* progress-list */
 
+
+.img2{
+  z-index: 1;
+  background-image: url(/png/black4.jpg) !important;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  background-repeat: no-repeat;
+  background-position:center 0px !important;
+  background-size: 123%;
+  border-top-left-radius: 3%;
+  border-top-right-radius: 3%;
+}
 .progress-box {
   border: 2px solid #ffffff;
   box-shadow: 2px 2px 18px 0px #ffffff;
@@ -263,6 +316,20 @@ h2 {
 
 
 /* Discarded-list */
+.img3{
+  z-index: 1;
+  background-image: url(/png/black1.jpg) !important;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  background-repeat: no-repeat;
+  background-position:center 0px !important;
+  background-size: 123%;
+  border-top-left-radius: 3%;
+  border-top-right-radius: 3%;
+}
+
+
+
 .text-discarded {
   text-align: center !important;
   font-size: large !important;

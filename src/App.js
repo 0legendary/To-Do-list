@@ -25,27 +25,27 @@ function App() {
     const time = now.toLocaleTimeString('en-US', { hour12: true });
     const dateTimeString = `${time}`;
     document.getElementById("time").innerHTML = dateTimeString;
-}
-setInterval(updateTime, 1000);
+  }
+  setInterval(updateTime, 1000);
 
 
 
   return (
     <div className="app">
       <div className='to-do-list'>
-        
+
         <div className="mainHeading">
-          <h1>ToDo List</h1>
-        
+          <h1 >ToDo List </h1>
+
         </div>
-        
+
         <div className="subHeading">
 
           <br />
           <h2>Whoop, it's {new Date().toLocaleDateString('en-US', { weekday: 'long' })} 🌝 ☕ </h2>
 
         </div>
-        <div className="input">
+        <div className="input" >
           <input
             value={toDo}
             onChange={(e) => setTodo(e.target.value)}
@@ -68,15 +68,16 @@ setInterval(updateTime, 1000);
           }} className="fas fa-plus"></i>
 
         </div>
-        <h2 id="time"></h2>
-      </div>
-
-
-      <div className='general-time'>
-        <div>
-        
+        <div className='general-time'>
+          <div>
+            <h2 id="time"></h2>
+          </div>
         </div>
+
       </div>
+
+
+
 
 
 
@@ -86,15 +87,13 @@ setInterval(updateTime, 1000);
         <section className="finished-list">
           <div className="container">
             <div className="finished-list-border">
-              <h1>Finished List</h1>
+              <h1 className='sticky-text img1'>Finished List</h1>
               <div className="todos">
                 {finished.map((obj) => {
                   return (
                     <div className="todo finished-box" key={obj.id}>
                       <div className="left">
                         <p className='text-finished'>{obj.text}</p>
-
-
                       </div>
                       <div className="right">
                         <p className='time'>{obj.time}</p>
@@ -111,7 +110,8 @@ setInterval(updateTime, 1000);
         <section className="progress-list">
           <div className="container">
             <div className="progress-list-border">
-              <h1>Progress List</h1>
+              <h1 className='sticky-text img2'>Progress List</h1>
+
               <div className="todos">
                 {toDos.map((obj) => {
                   return (
@@ -149,7 +149,7 @@ setInterval(updateTime, 1000);
         <section className="discarded-list">
           <div className="container">
             <div className="discarded-list-border">
-              <h1>Discarded List</h1>
+              <h1 className='sticky-text img3'>Discarded List</h1>
               <div className="todos">
                 {discarded.map((obj) => {
                   return (
